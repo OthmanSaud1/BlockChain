@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "crypto.js": "^3.0.0"
+  },
+  "type": "module",
+  "name": "blockchain",
+  "version": "1.0.0",
+  "main": "Block.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OthmanSaud1/BlockChain.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OthmanSaud1/BlockChain/issues"
+  },
+  "homepage": "https://github.com/OthmanSaud1/BlockChain#readme",
+  "description": ""
+}
