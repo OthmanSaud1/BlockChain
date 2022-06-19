@@ -2,12 +2,12 @@ import { sha256 } from "crypto.js";
 class Block{
     blockName = "Othman";
     constructor(hash, data, prev, hieght, nonce, timeStamp){
-        this.hash = this.proofOfWork();
-        this.data = data;
+        this.hash = this.proofOfWork().substring(0,64);
+        this.data = "temp";
         this.prev = prev;
         this.hieght = hieght;
-        this.nonce = 0;
-        this.timeStamp = Date.now();
+        this.nonce = parseInt(this.proofOfWork().substring(77));
+        this.timeStamp = this.proofOfWork().substring(64,77);
 
     }
     calculate(){
@@ -16,20 +16,20 @@ class Block{
        ).toString();
     }
     proofOfWork(){
-        let block = "OthCrypto";
+        let data = "temp";
         let nonce = 0;
         let numOfGuesses = 0;
-        let difficulty = 2;
+        let difficulty = 1;
+        let timeStamp = Date.now()
         
         for (let i = 0; i < 10000000; i++){   
         let magicHash = sha256(
-            block + nonce + Date.now()
+            data + nonce + timeStamp
         ).toString();
-            console.log(magicHash);
             if (magicHash.substring(0, difficulty) == "".padStart(difficulty, "0")){
                 console.log("magic hash : " + magicHash)
                 console.log("we found the hash with "+numOfGuesses+" guesses")
-                return
+                return magicHash + timeStamp + nonce;
             }
         numOfGuesses++; 
         nonce++;

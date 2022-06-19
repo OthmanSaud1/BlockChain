@@ -6,16 +6,48 @@ class BlockChain{
     constructor(){
         this.chain = []
         this.init();
+        this.validateBlocks();
 
     }
-    init(){
-        let block = new Block(0,"Genesis","null",0,0,Date.now());
+    init(data){
         if(this.chain.length == 0){
+        let block = new Block(0,"Genesis","null",this.chain.length,0,Date.now());
         this.chain.push(block);
         console.log(this.chain);
     }
+    for(let i =1; i< 10 ; i ++){
+        let block = new Block("",data,this.chain[i-1].hash,this.chain.length,0,Date.now());
+        this.chain.push(block);
+        console.log(this.chain[i]);
+        
+            } 
+        
     
-}
+    
+    }
+
+    validateBlocks(){
+        let flag = true;
+        for(let i = 1; i<this.chain.length; i++){
+            if(this.chain[i].prev != this.chain[i-1].hash)
+            flag = false;
+        }
+        console.log(flag);
+        
+        for(let i = 0; i<this.chain.length; i++){
+            flag = this.validateBlocksHelper(this.chain[i].data, this.chain[i].nonce, this.chain[i].timeStamp, this.chain[i].hash);
+            if (flag == false){
+                break;
+            }
+        }
+        console.log(flag);
+    }
+    validateBlocksHelper(){
+        if(!(sha256(arguments[0] + arguments[1] + arguments[2]).toString() == arguments[3])){
+        return false;
+        }
+        else return true
+    }
 
 
     
