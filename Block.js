@@ -2,12 +2,13 @@ import { sha256 } from "crypto.js";
 class Block{
     blockName = "Othman";
     constructor(hash, data = "temp", prev, hieght, nonce, timeStamp){
-        this.hash = this.proofOfWork().substring(0,64);
+        let concat = this.proofOfWork();
+        this.hash = concat.substring(0,64);
         this.data = data;
         this.prev = prev;
         this.hieght = hieght;
-        this.nonce = parseInt(this.proofOfWork().substring(77));
-        this.timeStamp = parseInt(this.proofOfWork().substring(64,77));
+        this.nonce = parseInt(concat.substring(77));
+        this.timeStamp = parseInt(concat.substring(64,77));
 
     }
     calculate(){

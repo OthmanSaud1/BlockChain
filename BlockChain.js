@@ -16,7 +16,7 @@ class BlockChain{
         console.log(this.chain);
     }
     for(let i =1; i< 10 ; i ++){
-        let block = new Block("",null,this.chain[i-1].hash,this.chain.length,0,Date.now());
+        let block = new Block("","",this.chain[i-1].hash,this.chain.length,0,Date.now());
         this.chain.push(block);
         console.log(this.chain[i]);
         
@@ -34,7 +34,7 @@ class BlockChain{
         }
         console.log(flag);
         
-        for(let i = 0; i<this.chain.length; i++){
+        for(let i = 1; i<this.chain.length; i++){
           if (!(sha256(this.chain[i].data + this.chain[i].nonce + this.chain[i].timeStamp).toString() == this.chain[i].hash)){
             flag = false;
           }
