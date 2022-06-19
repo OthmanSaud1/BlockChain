@@ -16,7 +16,7 @@ class BlockChain{
         console.log(this.chain);
     }
     for(let i =1; i< 10 ; i ++){
-        let block = new Block("",data,this.chain[i-1].hash,this.chain.length,0,Date.now());
+        let block = new Block("",null,this.chain[i-1].hash,this.chain.length,0,Date.now());
         this.chain.push(block);
         console.log(this.chain[i]);
         

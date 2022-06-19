@@ -1,9 +1,9 @@
 import { sha256 } from "crypto.js";
 class Block{
     blockName = "Othman";
-    constructor(hash, data, prev, hieght, nonce, timeStamp){
+    constructor(hash, data = "temp", prev, hieght, nonce, timeStamp){
         this.hash = this.proofOfWork().substring(0,64);
-        this.data = "temp";
+        this.data = data;
         this.prev = prev;
         this.hieght = hieght;
         this.nonce = parseInt(this.proofOfWork().substring(77));
@@ -16,7 +16,7 @@ class Block{
        ).toString();
     }
     proofOfWork(){
-        let data = "temp";
+        let data = "";
         let nonce = 0;
         let numOfGuesses = 0;
         let difficulty = 1;
