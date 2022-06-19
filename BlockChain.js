@@ -35,19 +35,20 @@ class BlockChain{
         console.log(flag);
         
         for(let i = 0; i<this.chain.length; i++){
-            flag = this.validateBlocksHelper(this.chain[i].data, this.chain[i].nonce, this.chain[i].timeStamp, this.chain[i].hash);
-            if (flag == false){
-                break;
-            }
+          if (!(sha256(this.chain[i].data + this.chain[i].nonce + this.chain[i].timeStamp).toString() == this.chain[i].hash)){
+            flag = false;
+          }
+
+         }
+            console.log(flag);
         }
-        console.log(flag);
-    }
-    validateBlocksHelper(){
-        if(!(sha256(arguments[0] + arguments[1] + arguments[2]).toString() == arguments[3])){
-        return false;
-        }
-        else return true
-    }
+    
+    // validateBlocksHelper(){
+    //     if(!(sha256(arguments[0] + arguments[1] + arguments[2]).toString() == arguments[3])){
+    //     return false;
+    //     }
+    //     else return true
+    // }
 
 
     

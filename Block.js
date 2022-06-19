@@ -7,7 +7,7 @@ class Block{
         this.prev = prev;
         this.hieght = hieght;
         this.nonce = parseInt(this.proofOfWork().substring(77));
-        this.timeStamp = this.proofOfWork().substring(64,77);
+        this.timeStamp = parseInt(this.proofOfWork().substring(64,77));
 
     }
     calculate(){
